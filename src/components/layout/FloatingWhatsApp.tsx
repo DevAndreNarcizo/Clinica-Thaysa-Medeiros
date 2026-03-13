@@ -83,7 +83,7 @@ export function FloatingWhatsApp() {
                     </motion.button>
 
                     {/* Pulse animation */}
-                    <span className="absolute inset-0 rounded-full bg-green-500 opacity-75 animate-ping" />
+                    <span className="absolute inset-0 rounded-full bg-green-500 opacity-75 animate-ping pointer-events-none" />
                 </motion.div>
             )}
         </AnimatePresence>

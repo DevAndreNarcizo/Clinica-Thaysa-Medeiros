@@ -87,7 +87,7 @@ export default function Home() {
             {/* Featured Services */}
             <section className="py-24 bg-navy-900 relative z-10 border-t border-white/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
+                    <div className="flex flex-col items-center text-center mb-16">
                         <span className="text-gold font-bold uppercase tracking-widest text-sm mb-4 block">Especialidades</span>
                         <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-4">
                             Serviços em <span className="gold-text">Destaque</span>
@@ -118,7 +118,7 @@ export default function Home() {
             {/* Testimonials */}
             <section className="py-24 bg-navy-900 border-t border-white/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-16">
+                    <div className="flex flex-col items-center text-center mb-16">
                         <span className="text-gold font-bold uppercase tracking-widest text-sm mb-4 block">Feedback</span>
                         <h2 className="font-display text-4xl sm:text-5xl font-bold text-white mb-6">
                             O Que Nossas <span className="gold-text">Pacientes Dizem</span>

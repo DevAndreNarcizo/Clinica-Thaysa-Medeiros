@@ -125,7 +125,7 @@ export default function About() {
             {/* Team */}
             <section className="py-24 sm:py-32 bg-navy-900 border-t border-white/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-20 animate-fade-in">
+                    <div className="flex flex-col items-center text-center mb-20 animate-fade-in">
                         <span className="text-gold font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Especialistas</span>
                         <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
                             Nossa <span className="gold-text">Equipe</span>
