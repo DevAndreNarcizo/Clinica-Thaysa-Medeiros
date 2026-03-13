@@ -9,6 +9,7 @@ const config: Config = {
         extend: {
             colors: {
                 navy: {
+                    DEFAULT: '#050B18', // Deep Midnight Navy
                     50: '#f0f4f8',
                     100: '#d9e2ec',
                     200: '#bcccdc',
@@ -18,15 +19,16 @@ const config: Config = {
                     600: '#486581',
                     700: '#334e68',
                     800: '#243b53',
-                    900: '#050B18', // Deep Midnight Navy
+                    900: '#050B18',
                 },
                 gold: {
+                    DEFAULT: '#C5A03A', // Primary Gold
                     50: '#FBF7EE',
                     100: '#F4EBD4',
                     200: '#E9D7AA',
                     300: '#DFC37F',
                     400: '#D4AF55',
-                    500: '#C5A03A', // Primary Gold
+                    500: '#C5A03A',
                     600: '#A1822F',
                     700: '#7D6525',
                     800: '#59481A',
