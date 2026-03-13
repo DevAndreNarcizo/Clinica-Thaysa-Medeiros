@@ -153,7 +153,7 @@ export default function Home() {
                                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                             </svg>
-                            <span className="text-white font-bold text-lg">5,0</span>
+                            <span className="text-white font-bold text-lg">4,9</span>
                             <div className="flex gap-0.5">
                                 {[1,2,3,4,5].map(i => (
                                     <svg key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" viewBox="0 0 20 20">
@@ -161,7 +161,7 @@ export default function Home() {
                                     </svg>
                                 ))}
                             </div>
-                            <span className="text-slate-400 text-sm">5 estrelas no Google</span>
+                            <span className="text-slate-400 text-sm">100+ avaliações no Google</span>
                         </div>
                     </div>
 
