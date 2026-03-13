@@ -134,11 +134,15 @@ export function ContactForm() {
 
             {/* Submit Status */}
             {submitStatus === 'success' && (
-                <div className="flex items-center gap-2 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-                    <CheckCircle className="w-5 h-5 flex-shrink-0" />
-                    <p className="text-sm">
-                        Mensagem enviada com sucesso! Entraremos em contato em breve.
-                    </p>
+                <div className="flex items-start gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400">
+                    <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                    <div>
+                        <p className="text-sm font-semibold mb-1">Mensagem enviada com sucesso!</p>
+                        <p className="text-xs text-green-400/80">
+                            Nossa equipe retornará em até <strong>2 horas</strong> durante o horário comercial (Ter–Sáb, 8h–18h).
+                            Ou chame direto no WhatsApp para resposta imediata. ✨
+                        </p>
+                    </div>
                 </div>
             )}
 

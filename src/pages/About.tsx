@@ -1,9 +1,15 @@
 import { Award, Heart, Target, Sparkles } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { team } from '@/data/team';
 
 export default function About() {
     return (
         <div className="min-h-screen bg-navy-900">
+            <Helmet>
+                <title>Sobre a Clínica | Thaysa Medeiros — Estética Avançada Goiânia</title>
+                <meta name="description" content="Conheça a Dra. Thaysa Medeiros, esteticista especialista em Goiânia. Nossa missão é oferecer tratamentos estéticos avançados com excelência e humanização." />
+                <link rel="canonical" href="https://clinicathaysamedeiros.com.br/sobre" />
+            </Helmet>
             {/* Hero */}
             <section className="bg-navy-900 text-white py-24 sm:py-32 relative overflow-hidden">
                 <div className="absolute inset-0 z-0">

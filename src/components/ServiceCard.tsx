@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardFooter } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Service } from '@/types';
@@ -15,6 +16,8 @@ export function ServiceCard({ service }: ServiceCardProps) {
                 <img
                     src={service.image}
                     alt={service.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-80" />
@@ -28,9 +31,11 @@ export function ServiceCard({ service }: ServiceCardProps) {
             </div>
 
             <CardContent className="flex-1 p-8">
-                <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors">
-                    {service.title}
-                </h3>
+                <Link to={`/servicos/${service.slug}`}>
+                    <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors hover:text-gold">
+                        {service.title}
+                    </h3>
+                </Link>
                 <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
                     {service.shortDescription}
                 </p>

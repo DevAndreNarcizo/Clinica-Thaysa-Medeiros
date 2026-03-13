@@ -9,6 +9,8 @@ import ServiceDetail from '@/pages/ServiceDetail';
 import About from '@/pages/About';
 import BeforeAfter from '@/pages/BeforeAfter';
 import Contact from '@/pages/Contact';
+import Blog from '@/pages/Blog';
+import BlogPost from '@/pages/BlogPost';
 
 /** Scroll to top on every route change */
 function ScrollReset() {
@@ -32,6 +34,8 @@ export default function App() {
                     <Route path="/sobre" element={<About />} />
                     <Route path="/antes-depois" element={<BeforeAfter />} />
                     <Route path="/contato" element={<Contact />} />
+                    <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
                 </Routes>
             </main>
             <Footer />

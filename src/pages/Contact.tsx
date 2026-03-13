@@ -1,4 +1,5 @@
-import { Phone, MapPin, Instagram } from 'lucide-react';
+import { Phone, MapPin, Instagram, Clock } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { ContactForm } from '@/components/ContactForm';
 import { siteConfig } from '@/data/config';
 import { formatWhatsAppLink } from '@/lib/utils';
@@ -6,6 +7,11 @@ import { formatWhatsAppLink } from '@/lib/utils';
 export default function Contact() {
     return (
         <div className="min-h-screen bg-navy-900">
+            <Helmet>
+                <title>Contato e Agendamento | Thaysa Medeiros — Goiânia GO</title>
+                <meta name="description" content="Entre em contato com a Clínica Thaysa Medeiros em Goiânia. Agende sua avaliação gratuita pelo WhatsApp ou formulário. Av. Parque Atheneu, Goiânia - GO." />
+                <link rel="canonical" href="https://clinicathaysamedeiros.com.br/contato" />
+            </Helmet>
             {/* Hero */}
             <section className="bg-navy-900 text-white py-24 sm:py-32 relative overflow-hidden">
                 <div className="absolute inset-0 z-0">
@@ -99,13 +105,32 @@ export default function Contact() {
                                         </a>
                                     </div>
                                 </div>
+
+                                {/* Business Hours */}
+                                <div className="flex items-start gap-4 p-6 glass rounded-2xl border border-accent/10">
+                                    <div className="flex-shrink-0 w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center">
+                                        <Clock className="w-6 h-6 text-gold" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-bold text-white mb-1 font-display">Horário de Atendimento</h3>
+                                        <p className="text-slate-300 font-light text-sm">{siteConfig.businessHours?.weekdays}</p>
+                                        <p className="text-slate-500 font-light text-xs mt-1">Domingo e Segunda: Fechado</p>
+                                    </div>
+                                </div>
                             </div>
 
-                            {/* Map Placeholder */}
-                            <div className="rounded-2xl overflow-hidden h-64 bg-neutral-100 flex items-center justify-center border-2 border-dashed border-neutral-300">
-                                <p className="text-neutral-500 font-medium">
-                                    Mapa (Goiânia - GO)
-                                </p>
+                            {/* Google Maps Embed */}
+                            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
+                                <iframe
+                                    title="Localização Clínica Thaysa Medeiros"
+                                    src="https://maps.google.com/maps?q=Avenida+Parque+Atheneu+Qd07+Lt23+Goiania+GO+74893-020&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                    width="100%"
+                                    height="280"
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    className="block"
+                                    style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
+                                />
                             </div>
                         </div>
 

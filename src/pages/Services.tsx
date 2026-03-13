@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { ServiceCard } from '@/components/ServiceCard';
 import { services } from '@/data/services';
 import type { Service } from '@/types';
@@ -21,6 +22,12 @@ export default function Services() {
 
     return (
         <div className="min-h-screen bg-navy-900">
+            <Helmet>
+                <title>Serviços | Thaysa Medeiros — Estética Avançada em Goiânia</title>
+                <meta name="description" content="Conheça todos os procedimentos estéticos da Clínica Thaysa Medeiros: harmonização facial, botox, criolipólise, microagulhamento e muito mais em Goiânia." />
+                <link rel="canonical" href="https://clinicathaysamedeiros.com.br/servicos" />
+            </Helmet>
+
             {/* Hero */}
             <section className="bg-navy-900 text-white py-20 sm:py-28 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-900/90 to-navy-900/80 z-0" />

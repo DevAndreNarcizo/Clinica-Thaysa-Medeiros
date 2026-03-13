@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { BeforeAfterSlider } from '@/components/BeforeAfterSlider';
 import { Button } from '@/components/ui/Button';
 import { ArrowRight } from 'lucide-react';
@@ -80,6 +81,12 @@ export default function BeforeAfter() {
 
     return (
         <div className="min-h-screen bg-navy-900 text-white">
+            <Helmet>
+                <title>Antes e Depois | Resultados Reais | Thaysa Medeiros Goiânia</title>
+                <meta name="description" content="Veja os resultados reais dos tratamentos estéticos da Clínica Thaysa Medeiros. Antes e depois de harmonização, criolipólise, microagulhamento e mais." />
+                <link rel="canonical" href="https://clinicathaysamedeiros.com.br/antes-depois" />
+            </Helmet>
+
             {/* Hero */}
             <section className="bg-navy-900 text-white py-24 sm:py-32 relative overflow-hidden">
                 <div className="absolute inset-0 z-0">

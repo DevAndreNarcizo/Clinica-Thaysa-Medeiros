@@ -228,3 +228,11 @@ export const getServiceBySlug = (slug: string): Service | undefined => {
 export const getServicesByCategory = (category: Service['category']): Service[] => {
     return services.filter(s => s.category === category);
 };
+
+export const getRelatedServices = (slug: string, limit = 3): Service[] => {
+    const current = getServiceBySlug(slug);
+    if (!current) return [];
+    return services
+        .filter(s => s.slug !== slug && s.category === current.category)
+        .slice(0, limit);
+};

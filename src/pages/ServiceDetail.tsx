@@ -1,15 +1,18 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Clock, Calendar, CheckCircle, Sparkles } from 'lucide-react';
+import { Clock, Calendar, CheckCircle, Sparkles } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import { Button } from '@/components/ui/Button';
-import { getServiceBySlug } from '@/data/services';
+import { Breadcrumb } from '@/components/ui/Breadcrumb';
+import { ServiceCard } from '@/components/ServiceCard';
+import { getServiceBySlug, getRelatedServices } from '@/data/services';
 import { siteConfig } from '@/data/config';
 import { formatWhatsAppLink } from '@/lib/utils';
-import { Link } from 'react-router-dom';
 
 export default function ServiceDetail() {
     const { slug } = useParams<{ slug: string }>();
     const navigate = useNavigate();
     const service = slug ? getServiceBySlug(slug) : null;
+    const related = slug ? getRelatedServices(slug) : [];
 
     if (!service) {
         return (
@@ -22,16 +25,20 @@ export default function ServiceDetail() {
 
     return (
         <div className="min-h-screen bg-navy-900 text-white">
-            {/* Back Button */}
+            <Helmet>
+                <title>{service.title} em Goiânia | Thaysa Medeiros</title>
+                <meta name="description" content={`${service.shortDescription} Agende sua avaliação gratuita com a Dra. Thaysa Medeiros em Goiânia.`} />
+                <link rel="canonical" href={`https://clinicathaysamedeiros.com.br/servicos/${service.slug}`} />
+            </Helmet>
+
+            {/* Breadcrumb */}
             <div className="bg-navy-900 border-b border-white/5">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-                    <Link
-                        to="/servicos"
-                        className="inline-flex items-center text-slate-400 hover:text-gold font-medium transition-colors"
-                    >
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        Voltar para Serviços
-                    </Link>
+                    <Breadcrumb items={[
+                        { label: 'Início', href: '/' },
+                        { label: 'Serviços', href: '/servicos' },
+                        { label: service.title },
+                    ]} />
                 </div>
             </div>
 
@@ -40,6 +47,8 @@ export default function ServiceDetail() {
                 <img
                     src={service.image}
                     alt={service.title}
+                    loading="eager"
+                    decoding="async"
                     className="w-full h-full object-cover brightness-[0.4]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/40 to-transparent" />
@@ -119,8 +128,33 @@ export default function ServiceDetail() {
                                         Alguns procedimentos apresentam resultados imediatos, enquanto outros são progressivos.
                                     </p>
                                 </details>
+
+                                <details className="group glass border border-white/5 rounded-2xl p-6 transition-all">
+                                    <summary className="font-bold text-white cursor-pointer list-none flex items-center justify-between">
+                                        Preciso de avaliação prévia?
+                                        <span className="text-gold transition-transform group-open:rotate-180">▼</span>
+                                    </summary>
+                                    <p className="mt-4 text-slate-400 font-light leading-relaxed">
+                                        Sim, a avaliação prévia é fundamental para personalizar o protocolo ideal para você.
+                                        Oferecemos avaliação gratuita — entre em contato para agendar a sua.
+                                    </p>
+                                </details>
                             </div>
                         </div>
+
+                        {/* Related Services */}
+                        {related.length > 0 && (
+                            <div className="pt-8 border-t border-white/5">
+                                <h2 className="font-display text-2xl font-bold text-white mb-8">
+                                    Tratamentos <span className="gold-text">Relacionados</span>
+                                </h2>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    {related.map(s => (
+                                        <ServiceCard key={s.id} service={s} />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
                     </div>
 
                     {/* Sidebar */}

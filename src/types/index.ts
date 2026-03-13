@@ -22,6 +22,8 @@ export interface Testimonial {
     text: string;
     image?: string;
     date: string;
+    avatar?: string;
+    source?: 'Google' | 'Instagram' | 'Direto';
 }
 
 export interface TeamMember {
@@ -39,11 +41,11 @@ export interface BlogPost {
     title: string;
     excerpt: string;
     content: string;
-    category: string;
-    author: string;
+    category: 'facial' | 'corporal' | 'avancado' | 'dicas';
+    coverImage: string;
     publishedAt: string;
-    image: string;
-    readTime: string;
+    readTime: number;
+    tags: string[];
 }
 
 export interface BeforeAfter {

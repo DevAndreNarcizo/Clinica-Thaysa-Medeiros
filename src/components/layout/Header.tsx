@@ -10,8 +10,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 const navigation = [
     { name: 'Início', href: '/' },
     { name: 'Serviços', href: '/servicos' },
-    { name: 'Sobre', href: '/sobre' },
     { name: 'Antes & Depois', href: '/antes-depois' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Sobre', href: '/sobre' },
     { name: 'Contato', href: '/contato' },
 ];
 
