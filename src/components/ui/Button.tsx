@@ -1,0 +1,44 @@
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+    size?: 'sm' | 'md' | 'lg';
+    asChild?: boolean;
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ className, variant = 'primary', size = 'md', ...props }, ref) => {
+        return (
+            <button
+                className={cn(
+                    'inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-400 focus-visible:ring-offset-2',
+                    'disabled:pointer-events-none disabled:opacity-50',
+                    {
+                        // Variants
+                        'bg-gold-500 text-navy-900 hover:bg-gold-400 active:bg-gold-600 shadow-md hover:shadow-lg transition-all duration-300 font-bold':
+                            variant === 'primary',
+                        'bg-navy-900 text-white hover:bg-navy-800 active:bg-navy-950 shadow-md hover:shadow-lg transition-all duration-300':
+                            variant === 'secondary',
+                        'border-2 border-gold-500 text-gold-600 hover:bg-gold-50 active:bg-gold-100 transition-all duration-300':
+                            variant === 'outline',
+                        'text-navy-700 hover:bg-navy-50 active:bg-navy-100 transition-all duration-300':
+                            variant === 'ghost',
+                        // Sizes
+                        'px-4 py-2 text-sm': size === 'sm',
+                        'px-6 py-3 text-base': size === 'md',
+                        'px-8 py-4 text-lg': size === 'lg',
+                    },
+                    className
+                )}
+                ref={ref}
+                {...props}
+            />
+        );
+    }
+);
+
+Button.displayName = 'Button';
+
+export { Button };

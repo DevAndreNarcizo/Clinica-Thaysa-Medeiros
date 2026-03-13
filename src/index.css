@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --color-navy: #050B18;
+    --color-gold: #C5A03A;
+    --color-gold-light: #E9D7AA;
+    --glass-bg: rgba(5, 11, 24, 0.85);
+    --glass-border: rgba(197, 160, 58, 0.2);
+  }
+
+  * {
+    @apply border-neutral-200;
+  }
+
+  body {
+    background-color: var(--color-navy);
+    @apply text-white font-body;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-md bg-[var(--glass-bg)] border border-[var(--glass-border)];
+  }
+  .gold-gradient {
+    background: linear-gradient(135deg, #A1822F 0%, #C5A03A 25%, #E9D7AA 50%, #C5A03A 75%, #A1822F 100%);
+    background-size: 200% auto;
+  }
+  .gold-text {
+    @apply font-bold overflow-hidden;
+    background: linear-gradient(135deg, #A1822F 0%, #C5A03A 25%, #E9D7AA 50%, #C5A03A 75%, #A1822F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-400;
+}
