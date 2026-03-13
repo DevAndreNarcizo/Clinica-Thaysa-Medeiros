@@ -123,7 +123,7 @@ export default function Contact() {
                             <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
                                 <iframe
                                     title="Localização Clínica Thaysa Medeiros"
-                                    src="https://maps.google.com/maps?q=Avenida+Parque+Atheneu+Qd.07+Lt.23+Unidade+301+Sala+3+Goiania+GO+74893-020&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                    src="https://maps.google.com/maps?q=Thaysa+Medeiros+Est%C3%A9tica+Beleza+e+Bem-estar+Goi%C3%A2nia+GO&t=&z=17&ie=UTF8&iwloc=&output=embed"
                                     width="100%"
                                     height="280"
                                     loading="lazy"
