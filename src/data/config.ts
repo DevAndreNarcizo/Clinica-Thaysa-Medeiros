@@ -8,7 +8,7 @@ export const siteConfig: SiteConfig = {
     whatsapp: '+5562985394226',
     instagram: 'clinicathaysamedeiros',
     phone: '(62) 98539-4226',
-    address: 'Avenida Parque Atheneu Qd.07 Lt.23 Unidade 301 (Sala 3), Goiânia - GO, CEP 74893-020',
+    address: 'Avenida Parque Atheneu Qd.07 Lt.23 Unidade 301 Sala 3, Goiânia - GO, 74893-020',
     city: 'Goiânia',
     state: 'GO',
     businessHours: {
