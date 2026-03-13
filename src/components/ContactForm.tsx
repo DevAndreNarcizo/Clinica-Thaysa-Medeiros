@@ -106,11 +106,12 @@ export function ContactForm() {
                 <select
                     id="service"
                     {...register('service')}
-                    className="flex h-12 w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white text-base focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-transparent transition-all duration-200"
+                    className="flex h-12 w-full rounded-lg border border-white/10 bg-navy px-4 py-3 text-white text-base focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-transparent transition-all duration-200"
+                    style={{ colorScheme: 'dark' }}
                 >
-                    <option value="">Selecione um serviço</option>
+                    <option value="" className="bg-navy text-white">Selecione um serviço</option>
                     {services.map((service) => (
-                        <option key={service.id} value={service.title}>
+                        <option key={service.id} value={service.title} className="bg-navy text-white">
                             {service.title}
                         </option>
                     ))}
