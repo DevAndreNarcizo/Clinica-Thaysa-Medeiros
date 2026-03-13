@@ -77,8 +77,8 @@ export default function Contact() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-white mb-1 font-display">Localização</h3>
-                                        <a 
-                                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.address || 'Goiânia - GO')}`}
+                                        <a
+                                            href="https://maps.google.com/maps?q=Thaysa+Medeiros+Est%C3%A9tica+Beleza+e+Bem-estar+Goi%C3%A2nia+GO&t=&z=17&ie=UTF8&iwloc="
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="text-slate-300 hover:text-gold font-light text-sm"
