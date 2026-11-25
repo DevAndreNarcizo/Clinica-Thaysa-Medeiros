@@ -56,7 +56,7 @@ export function ContactForm() {
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {/* Name */}
             <div>
-                <label htmlFor="name" className="block text-sm font-semibold text-slate-300 mb-2 uppercase tracking-wide">
+                <label htmlFor="name" className="block text-sm font-semibold text-ink mb-2 uppercase tracking-wide">
                     Nome Completo *
                 </label>
                 <Input
@@ -64,13 +64,13 @@ export function ContactForm() {
                     {...register('name')}
                     error={errors.name?.message}
                     placeholder="Seu nome"
-                    className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:ring-gold/50"
+                    className="bg-ivory-light/5 border-dark/10 text-dark placeholder:text-ink focus:ring-gold/50"
                 />
             </div>
 
             {/* Email */}
             <div>
-                <label htmlFor="email" className="block text-sm font-semibold text-slate-300 mb-2 uppercase tracking-wide">
+                <label htmlFor="email" className="block text-sm font-semibold text-ink mb-2 uppercase tracking-wide">
                     E-mail *
                 </label>
                 <Input
@@ -79,13 +79,13 @@ export function ContactForm() {
                     {...register('email')}
                     error={errors.email?.message}
                     placeholder="seu@email.com"
-                    className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:ring-gold/50"
+                    className="bg-ivory-light/5 border-dark/10 text-dark placeholder:text-ink focus:ring-gold/50"
                 />
             </div>
 
             {/* Phone */}
             <div>
-                <label htmlFor="phone" className="block text-sm font-semibold text-slate-300 mb-2 uppercase tracking-wide">
+                <label htmlFor="phone" className="block text-sm font-semibold text-ink mb-2 uppercase tracking-wide">
                     Telefone *
                 </label>
                 <Input
@@ -94,24 +94,24 @@ export function ContactForm() {
                     {...register('phone')}
                     error={errors.phone?.message}
                     placeholder="(00) 00000-0000"
-                    className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:ring-gold/50"
+                    className="bg-ivory-light/5 border-dark/10 text-dark placeholder:text-ink focus:ring-gold/50"
                 />
             </div>
 
             {/* Service */}
             <div>
-                <label htmlFor="service" className="block text-sm font-semibold text-slate-300 mb-2 uppercase tracking-wide">
+                <label htmlFor="service" className="block text-sm font-semibold text-ink mb-2 uppercase tracking-wide">
                     Serviço de Interesse
                 </label>
                 <select
                     id="service"
                     {...register('service')}
-                    className="flex h-12 w-full rounded-lg border border-white/10 bg-navy px-4 py-3 text-white text-base focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-transparent transition-all duration-200"
+                    className="flex h-12 w-full rounded-lg border border-dark/10 bg-ivory px-4 py-3 text-dark text-base focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-transparent transition-all duration-200"
                     style={{ colorScheme: 'dark' }}
                 >
-                    <option value="" className="bg-navy text-white">Selecione um serviço</option>
+                    <option value="" className="bg-ivory text-dark">Selecione um serviço</option>
                     {services.map((service) => (
-                        <option key={service.id} value={service.title} className="bg-navy text-white">
+                        <option key={service.id} value={service.title} className="bg-ivory text-dark">
                             {service.title}
                         </option>
                     ))}
@@ -120,7 +120,7 @@ export function ContactForm() {
 
             {/* Message */}
             <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-slate-300 mb-2 uppercase tracking-wide">
+                <label htmlFor="message" className="block text-sm font-semibold text-ink mb-2 uppercase tracking-wide">
                     Mensagem *
                 </label>
                 <Textarea
@@ -129,17 +129,17 @@ export function ContactForm() {
                     error={errors.message?.message}
                     placeholder="Conte-nos como podemos ajudar..."
                     rows={5}
-                    className="bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:ring-gold/50"
+                    className="bg-ivory-light/5 border-dark/10 text-dark placeholder:text-ink focus:ring-gold/50"
                 />
             </div>
 
             {/* Submit Status */}
             {submitStatus === 'success' && (
-                <div className="flex items-start gap-3 p-4 bg-green-500/10 border border-green-500/20 rounded-xl text-green-400">
+                <div className="flex items-start gap-3 p-4 bg-rose/10 border border-rose/20 rounded-xl text-rose">
                     <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
                     <div>
                         <p className="text-sm font-semibold mb-1">Mensagem enviada com sucesso!</p>
-                        <p className="text-xs text-green-400/80">
+                        <p className="text-xs text-rose/80">
                             Nossa equipe retornará em até <strong>2 horas</strong> durante o horário comercial (Ter–Sáb, 8h–18h).
                             Ou chame direto no WhatsApp para resposta imediata. ✨
                         </p>
@@ -148,7 +148,7 @@ export function ContactForm() {
             )}
 
             {submitStatus === 'error' && (
-                <div className="flex items-center gap-2 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+                <div className="flex items-center gap-2 p-4 bg-blush border border-rose rounded-lg text-ink">
                     <AlertCircle className="w-5 h-5 flex-shrink-0" />
                     <p className="text-sm">
                         Erro ao enviar mensagem. Por favor, tente novamente ou entre em contato via WhatsApp.
@@ -160,12 +160,12 @@ export function ContactForm() {
             <Button
                 type="submit"
                 size="lg"
-                className="w-full gold-gradient text-navy font-bold text-xl py-8 rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform"
+                className="w-full bg-gold text-dark font-bold text-xl py-8 rounded-2xl shadow-2xl hover:scale-[1.02] transition-transform"
                 disabled={isSubmitting}
             >
                 {isSubmitting ? (
                     <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                        <div className="w-5 h-5 border-2 border-ivory-light border-t-transparent rounded-full animate-spin mr-2" />
                         Enviando...
                     </>
                 ) : (

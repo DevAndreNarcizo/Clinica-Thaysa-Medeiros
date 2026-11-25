@@ -59,11 +59,10 @@ export interface BeforeAfter {
 
 export interface InstagramPost {
     id: string;
-    postId: string; // Instagram post ID for URL generation
-    caption: string;
     imageUrl: string;
     likes?: number;
-    timestamp: string;
+    caption?: string;
+    timestamp?: string;
     permalink: string; // Direct link to Instagram post
 }
 

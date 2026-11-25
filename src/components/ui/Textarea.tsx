@@ -11,19 +11,19 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             <div className="w-full">
                 <textarea
                     className={cn(
-                        'flex min-h-[120px] w-full rounded-lg border border-neutral-300 bg-white px-4 py-3 text-base',
-                        'placeholder:text-neutral-400',
+                        'flex min-h-[120px] w-full rounded-lg border border-blush bg-ivory-light px-4 py-3 text-base',
+                        'placeholder:text-ink',
                         'focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent',
                         'disabled:cursor-not-allowed disabled:opacity-50',
                         'transition-all duration-200 resize-none',
-                        error && 'border-red-500 focus:ring-red-400',
+                        error && 'border-rose focus:ring-rose',
                         className
                     )}
                     ref={ref}
                     {...props}
                 />
                 {error && (
-                    <p className="mt-1.5 text-sm text-red-600">{error}</p>
+                    <p className="mt-1.5 text-sm text-ink">{error}</p>
                 )}
             </div>
         );

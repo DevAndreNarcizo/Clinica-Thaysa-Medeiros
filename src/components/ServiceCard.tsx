@@ -11,18 +11,14 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
     return (
-        <Card hover className="h-full flex flex-col overflow-hidden group bg-navy border-white/5 hover:border-accent/30 transition-all duration-500 shadow-2xl">
-            <div className="relative h-64 overflow-hidden">
-                <img
-                    src={service.image}
-                    alt={service.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent opacity-80" />
-                <div className="absolute top-4 right-4">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase bg-accent text-navy">
+        <Card hover className="flex h-full flex-col overflow-hidden border-dark/10 bg-ivory shadow-soft transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-medium">
+            <div className="relative flex h-64 items-end overflow-hidden bg-gradient-to-br from-ivory-light via-blush/20 to-sage/30 p-7">
+                <div className="absolute right-6 top-6 h-24 w-24 rounded-full border border-gold/30" />
+                <span className="font-display text-3xl font-semibold text-dark/20" aria-hidden="true">
+                    {String(service.id).padStart(2, '0')}
+                </span>
+                <div className="absolute right-4 top-4">
+                    <span className="inline-flex rounded-full bg-ivory/95 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-dark shadow-sm">
                         {service.category === 'facial' && 'Facial'}
                         {service.category === 'corporal' && 'Corporal'}
                         {service.category === 'avancado' && 'Avançado'}
@@ -30,46 +26,27 @@ export function ServiceCard({ service }: ServiceCardProps) {
                 </div>
             </div>
 
-            <CardContent className="flex-1 p-8">
+            <CardContent className="flex-1 p-7">
                 <Link to={`/servicos/${service.slug}`}>
-                    <h3 className="font-display text-2xl font-bold text-white mb-3 group-hover:text-accent transition-colors hover:text-gold">
-                        {service.title}
-                    </h3>
+                    <h3 className="font-display text-2xl font-semibold text-dark transition-colors hover:text-gold">{service.title}</h3>
                 </Link>
-                <p className="text-slate-400 text-sm leading-relaxed font-light mb-6">
-                    {service.shortDescription}
-                </p>
-
-                <div className="space-y-3">
-                    <div className="flex items-center text-xs text-slate-500 tracking-wide uppercase">
-                        <span className="w-20 font-bold text-accent/70">Duração</span>
-                        <span className="text-white/80">{service.duration}</span>
-                    </div>
-                    <div className="flex items-center text-xs text-slate-500 tracking-wide uppercase">
-                        <span className="w-20 font-bold text-accent/70">Sessões</span>
-                        <span className="text-white/80">{service.sessions}</span>
-                    </div>
+                <p className="mb-6 mt-3 text-sm leading-relaxed text-ink">{service.shortDescription}</p>
+                <div className="space-y-2 text-xs">
+                    <div className="flex"><span className="w-20 font-bold uppercase tracking-wide text-gold">Duração</span><span className="text-ink">{service.duration}</span></div>
+                    <div className="flex"><span className="w-20 font-bold uppercase tracking-wide text-gold">Sessões</span><span className="text-ink">{service.sessions}</span></div>
                 </div>
             </CardContent>
 
-            <CardFooter className="p-8 pt-0 flex flex-col gap-3">
+            <CardFooter className="flex flex-col gap-3 p-7 pt-0">
                 {service.instagramPost && (
-                    <Button 
-                        variant="outline" 
-                        size="sm"
-                        className="w-full border-accent/20 text-accent hover:bg-accent hover:text-navy glass text-xs font-bold py-5"
-                        onClick={() => window.open(service.instagramPost, '_blank')}
-                    >
+                    <Button variant="outline" size="sm" className="w-full border-dark/15 text-dark hover:bg-dark hover:text-ivory" onClick={() => window.open(service.instagramPost, '_blank')}>
                         Ver no Instagram
-                        <ArrowRight className="w-3 h-3 ml-2" />
+                        <ArrowRight className="ml-2 h-3 w-3" />
                     </Button>
                 )}
-                <Button 
-                    className="w-full gold-gradient text-navy font-bold py-6 group/btn shadow-lg"
-                    onClick={() => window.open(`https://wa.me/55${siteConfig.whatsapp}?text=Olá! Gostaria de mais informações sobre: ${service.title}`, '_blank')}
-                >
-                    Agendar Agora
-                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
+                <Button className="w-full bg-dark py-5 text-ivory hover:bg-ink" onClick={() => window.open(`https://wa.me/55${siteConfig.whatsapp.replace('+55', '')}?text=Olá! Gostaria de mais informações sobre: ${service.title}`, '_blank')}>
+                    Agendar agora
+                    <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
             </CardFooter>
         </Card>

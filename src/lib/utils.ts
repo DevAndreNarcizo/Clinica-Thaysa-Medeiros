@@ -30,13 +30,6 @@ export function formatPhoneDisplay(number: string): string {
 }
 
 /**
- * Generate Instagram post URL from post ID
- */
-export function getInstagramPostUrl(postId: string): string {
-    return `https://www.instagram.com/p/${postId}/`;
-}
-
-/**
  * Slugify text for URLs
  */
 export function slugify(text: string): string {

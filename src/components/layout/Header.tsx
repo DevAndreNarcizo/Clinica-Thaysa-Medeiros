@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X, Phone, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
+import { cn, formatWhatsAppLink } from '@/lib/utils';
 import { siteConfig } from '@/data/config';
-import { formatWhatsAppLink } from '@/lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
 const navigation = [
     { name: 'Início', href: '/' },
@@ -19,141 +18,135 @@ const navigation = [
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const menuButtonRef = useRef<HTMLButtonElement>(null);
+    const reduceMotion = useReducedMotion();
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
-
-        window.addEventListener('scroll', handleScroll);
+        const handleScroll = () => setScrolled(window.scrollY > 20);
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    useEffect(() => {
+        if (!mobileMenuOpen) return;
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setMobileMenuOpen(false);
+                menuButtonRef.current?.focus();
+            }
+        };
+        document.addEventListener('keydown', handleKeyDown);
+        return () => document.removeEventListener('keydown', handleKeyDown);
+    }, [mobileMenuOpen]);
+
+    const closeMenu = () => setMobileMenuOpen(false);
 
     return (
         <header
             className={cn(
-                'fixed w-full z-50 transition-all duration-500',
+                'fixed left-0 top-0 z-50 w-full transition-all duration-300',
                 scrolled
-                    ? 'py-3 bg-navy-900/90 backdrop-blur-lg border-b border-white/5 shadow-2xl'
-                    : 'py-6 bg-transparent'
+                    ? 'border-b border-blush/60 bg-ivory-light/95 py-2 shadow-[0_8px_30px_-18px_rgba(36,26,30,0.25)] backdrop-blur-lg'
+                    : 'bg-transparent py-4 sm:py-5'
             )}
         >
-            <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <Link to="/" className="flex items-center space-x-3 group">
-                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden bg-white shadow-xl flex-shrink-0 border-2 border-gold transition-transform duration-300 group-hover:scale-105">
-                            <div className="absolute inset-0 rounded-full overflow-hidden">
-                                <img
-                                    src="/images/logo.png"
-                                    alt="Thaysa Medeiros"
-                                    className="w-full h-full object-cover scale-110"
-                                />
-                            </div>
-                        </div>
-                        <div className="flex flex-col">
-                            <span className={`font-display text-xl sm:text-2xl font-bold transition-colors ${scrolled ? 'text-white' : 'text-white'}`}>
-                                Thaysa Medeiros
-                            </span>
-                            <span className="text-xs sm:text-sm text-accent font-medium tracking-wide uppercase">
-                                {siteConfig.specialty}
-                            </span>
-                        </div>
+            <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Navegação principal">
+                <div className="flex h-14 items-center justify-between gap-3">
+                    <Link to="/" className="group flex min-w-0 items-center" aria-label="Ir para a página inicial">
+                        <span className="font-display text-xl font-semibold tracking-wide text-dark sm:text-2xl">
+                            Thaysa Medeiros
+                        </span>
                     </Link>
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden lg:flex lg:items-center lg:space-x-8">
+                    <div className="hidden items-center gap-7 lg:flex">
                         {navigation.map((item) => (
                             <Link
                                 key={item.name}
                                 to={item.href}
-                                className="text-sm font-medium text-white/80 hover:text-accent transition-colors duration-200"
+                                className="text-sm font-semibold text-ink transition-colors hover:text-dark focus-visible:text-dark"
                             >
                                 {item.name}
                             </Link>
                         ))}
                     </div>
 
-                    {/* Desktop CTA */}
-                    <div className="hidden lg:flex lg:items-center lg:space-x-4">
+                    <div className="hidden items-center gap-3 lg:flex" suppressHydrationWarning>
                         <a
                             href={`https://instagram.com/${siteConfig.instagram}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-white/80 hover:text-accent transition-colors p-2"
-                            aria-label="Instagram"
+                            className="rounded-full p-2 text-ink transition-colors hover:text-dark"
+                            aria-label="Abrir Instagram da clínica"
                         >
-                            <Instagram className="w-5 h-5" />
+                            <Instagram className="h-5 w-5" />
                         </a>
                         <Button
                             size="md"
                             variant="primary"
-                            className="gold-gradient text-navy-900 font-bold shadow-[0_0_20px_rgba(197,160,89,0.3)] hover:scale-105 transition-transform"
+                            className="bg-gold text-dark shadow-sm hover:bg-blush"
                             onClick={() => window.open(formatWhatsAppLink(siteConfig.whatsapp, 'Olá! Gostaria de agendar uma avaliação.'), '_blank')}
                         >
-                            <Phone className="w-4 h-4 mr-2" />
+                            <Phone className="mr-2 h-4 w-4" />
                             Agendar Agora
                         </Button>
                     </div>
 
-                    {/* Mobile menu button */}
                     <button
+                        ref={menuButtonRef}
                         type="button"
-                        className="lg:hidden p-2 text-white hover:text-accent transition-colors"
-                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                        aria-label="Toggle menu"
+                        className="rounded-lg p-2 text-dark transition-colors hover:bg-blush/35 lg:hidden"
+                        onClick={() => setMobileMenuOpen((open) => !open)}
+                        aria-expanded={mobileMenuOpen}
+                        aria-controls="mobile-navigation"
+                        aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
                     >
-                        {mobileMenuOpen ? (
-                            <X className="w-6 h-6" />
-                        ) : (
-                            <Menu className="w-6 h-6" />
-                        )}
+                        {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </button>
                 </div>
 
-                {/* Mobile Navigation */}
                 <AnimatePresence>
                     {mobileMenuOpen && (
                         <motion.div
-                            initial={{ opacity: 0, height: 0 }}
+                            id="mobile-navigation"
+                            initial={reduceMotion ? false : { opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.2 }}
-                            className="lg:hidden overflow-hidden"
+                            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, height: 0 }}
+                            transition={{ duration: reduceMotion ? 0 : 0.25 }}
+                            className="overflow-hidden lg:hidden"
                         >
-                            <div className="pt-4 pb-6 space-y-1 px-4 bg-navy-900/95 backdrop-blur-xl border-b border-white/5 shadow-2xl">
+                            <div className="mt-2 rounded-2xl border border-blush/60 bg-ivory/98 px-3 py-3 shadow-strong">
                                 {navigation.map((item) => (
                                     <Link
                                         key={item.name}
                                         to={item.href}
-                                        className="block px-4 py-3 text-base font-semibold text-white/80 hover:text-gold hover:bg-white/5 rounded-xl transition-all"
-                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="block rounded-xl px-4 py-3 text-base font-semibold text-ink hover:bg-blush/35 hover:text-dark"
+                                        onClick={closeMenu}
                                     >
                                         {item.name}
                                     </Link>
                                 ))}
-                                <div className="pt-4 space-y-3 px-1">
-                                    <a
-                                        href={`https://instagram.com/${siteConfig.instagram}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center px-4 py-3 text-base font-medium text-white/60 hover:text-white hover:bg-white/5 rounded-xl transition-all"
-                                    >
-                                        <Instagram className="w-5 h-5 mr-3 text-gold" />
-                                        Instagram
-                                    </a>
-                                    <Button
-                                        size="lg"
-                                        className="w-full gold-gradient text-navy-900 font-bold shadow-lg"
-                                        onClick={() => {
-                                            window.open(formatWhatsAppLink(siteConfig.whatsapp, 'Olá! Gostaria de agendar uma avaliação.'), '_blank');
-                                            setMobileMenuOpen(false);
-                                        }}
-                                    >
-                                        <Phone className="w-4 h-4 mr-2" />
-                                        Agendar Avaliação
-                                    </Button>
-                                </div>
+                                <a
+                                    href={`https://instagram.com/${siteConfig.instagram}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center rounded-xl px-4 py-3 text-base font-medium text-ink hover:bg-blush/35"
+                                    onClick={closeMenu}
+                                >
+                                    <Instagram className="mr-3 h-5 w-5 text-dark" />
+                                    Instagram
+                                </a>
+                                <Button
+                                    size="lg"
+                                    className="mt-2 w-full bg-gold text-dark hover:bg-blush"
+                                    onClick={() => {
+                                        window.open(formatWhatsAppLink(siteConfig.whatsapp, 'Olá! Gostaria de agendar uma avaliação.'), '_blank');
+                                        closeMenu();
+                                    }}
+                                >
+                                    <Phone className="mr-2 h-4 w-4" />
+                                    Agendar Avaliação
+                                </Button>
                             </div>
                         </motion.div>
                     )}

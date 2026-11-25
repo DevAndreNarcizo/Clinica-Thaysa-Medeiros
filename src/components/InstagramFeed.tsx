@@ -9,69 +9,44 @@ interface InstagramFeedProps {
 
 export function InstagramFeed({ limit = 6 }: InstagramFeedProps) {
     const posts = instagramPosts.slice(0, limit);
+    const profileUrl = `https://instagram.com/${siteConfig.instagram}`;
 
     return (
-        <section className="py-24 bg-navy-900 border-t border-white/5 relative z-10 transition-colors">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center justify-center gap-3 mb-6">
-                        <Instagram className="w-10 h-10 text-gold" />
-                        <h2 className="font-display text-4xl sm:text-5xl font-bold text-white">
-                            Siga no <span className="gold-text">Instagram</span>
-                        </h2>
+        <section className="relative z-10 border-t border-dark/5 bg-ivory-light py-20 sm:py-24">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="mb-10 text-center">
+                    <div className="mb-4 inline-flex items-center gap-3 text-dark">
+                        <Instagram className="h-8 w-8 text-gold" />
+                        <span className="text-xs font-bold uppercase tracking-[0.2em]">Instagram</span>
                     </div>
-                    <p className="text-slate-400 max-w-2xl mx-auto text-lg mt-2">
-                        Acompanhe nossos resultados, dicas de beleza e novidades no{' '}
-                        <a
-                            href={`https://instagram.com/${siteConfig.instagram}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gold hover:text-white font-medium transition-colors"
-                        >
-                            @{siteConfig.instagram}
-                        </a>
+                    <h2 className="font-display text-4xl font-semibold text-dark sm:text-5xl">Acompanhe a clínica</h2>
+                    <p className="mx-auto mt-4 max-w-xl text-ink">
+                        Siga <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-dark hover:text-gold">@{siteConfig.instagram}</a> para ver conteúdos publicados no perfil oficial.
                     </p>
                 </div>
 
-                {/* Posts Grid */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    {posts.map((post) => (
-                        <a
-                            key={post.id}
-                            href={post.permalink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group relative aspect-square overflow-hidden rounded-lg"
-                        >
-                            <img
-                                src={post.imageUrl}
-                                alt={post.caption.slice(0, 100)}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                            />
-
-                            {/* Overlay on hover */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
-                                    <ExternalLink className="w-8 h-8 text-white mb-2" />
-                                    <p className="text-white text-xs text-center line-clamp-3">
-                                        {post.caption}
-                                    </p>
+                {posts.length > 0 && (
+                    <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+                        {posts.map((post) => (
+                            <a
+                                key={post.id}
+                                href={profileUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative aspect-square overflow-hidden rounded-2xl border border-dark/10 bg-ivory"
+                            >
+                                <img src={post.imageUrl} alt="Conteúdo publicado pela clínica no Instagram" loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                <div className="absolute inset-0 flex items-center justify-center bg-dark/0 transition-colors group-hover:bg-dark/55">
+                                    <ExternalLink className="h-7 w-7 scale-75 text-dark opacity-0 transition-all group-hover:scale-100 group-hover:opacity-100" />
                                 </div>
-                            </div>
-                        </a>
-                    ))}
-                </div>
+                            </a>
+                        ))}
+                    </div>
+                )}
 
-                {/* CTA */}
-                <div className="text-center mt-10">
-                    <Button
-                        size="lg"
-                        variant="outline"
-                        className="text-white border-2 border-white hover:bg-white/10 hover:text-gold transition-all font-bold px-10 py-6 rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-                        onClick={() => window.open(`https://instagram.com/${siteConfig.instagram}`, '_blank')}
-                    >
-                        <Instagram className="w-5 h-5 mr-3" />
+                <div className="mt-10 text-center">
+                    <Button size="lg" variant="outline" className="border-dark/20 text-dark hover:bg-dark hover:text-ivory" onClick={() => window.open(profileUrl, '_blank')}>
+                        <Instagram className="mr-3 h-5 w-5" />
                         Siga-nos no Instagram
                     </Button>
                 </div>

@@ -17,13 +17,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     'disabled:pointer-events-none disabled:opacity-50',
                     {
                         // Variants
-                        'bg-gold-500 text-navy-900 hover:bg-gold-400 active:bg-gold-600 shadow-md hover:shadow-lg transition-all duration-300 font-bold':
+                        'bg-gold-500 text-dark hover:bg-blush active:bg-gold-600 shadow-md hover:shadow-lg transition-all duration-300 font-bold':
                             variant === 'primary',
-                        'bg-navy-900 text-white hover:bg-navy-800 active:bg-navy-950 shadow-md hover:shadow-lg transition-all duration-300':
+                        'bg-dark text-ivory hover:bg-ink active:bg-dark shadow-md hover:shadow-lg transition-all duration-300':
                             variant === 'secondary',
-                        'border-2 border-gold-500 text-gold-600 hover:bg-gold-50 active:bg-gold-100 transition-all duration-300':
+                        'border-2 border-dark/20 text-dark hover:bg-gold-50 active:bg-gold-100 transition-all duration-300':
                             variant === 'outline',
-                        'text-navy-700 hover:bg-navy-50 active:bg-navy-100 transition-all duration-300':
+                        'text-dark hover:bg-ivory active:bg-ivory-100 transition-all duration-300':
                             variant === 'ghost',
                         // Sizes
                         'px-4 py-2 text-sm': size === 'sm',

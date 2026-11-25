@@ -51,7 +51,7 @@ export function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterS
                     alt={`${alt} - Depois`}
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute top-4 right-4 bg-rose text-dark px-3 py-1 rounded-full text-sm font-medium">
                     Depois
                 </div>
             </div>
@@ -66,25 +66,25 @@ export function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterS
                     alt={`${alt} - Antes`}
                     className="w-full h-full object-cover"
                 />
-                <div className="absolute top-4 left-4 bg-neutral-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+                <div className="absolute top-4 left-4 bg-ink text-dark px-3 py-1 rounded-full text-sm font-medium">
                     Antes
                 </div>
             </div>
 
             {/* Slider Line */}
             <div
-                className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
+                className="absolute top-0 bottom-0 w-1 bg-ivory-light cursor-ew-resize"
                 style={{ left: `${sliderPosition}%` }}
             >
                 {/* Slider Handle */}
                 <motion.div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-strong flex items-center justify-center"
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-ivory-light rounded-full shadow-strong flex items-center justify-center"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
                     <div className="flex gap-1">
-                        <div className="w-0.5 h-6 bg-neutral-400" />
-                        <div className="w-0.5 h-6 bg-neutral-400" />
+                        <div className="w-0.5 h-6 bg-blush" />
+                        <div className="w-0.5 h-6 bg-blush" />
                     </div>
                 </motion.div>
             </div>

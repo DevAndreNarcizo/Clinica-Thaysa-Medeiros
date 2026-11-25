@@ -4,7 +4,7 @@ export const siteConfig: SiteConfig = {
     name: 'Thaysa Medeiros',
     professionalName: 'Dra. Thaysa Medeiros',
     specialty: 'Estética Avançada',
-    description: 'Tratamentos estéticos avançados com resultados comprovados. Transforme sua autoestima com procedimentos personalizados e tecnologia de ponta.',
+    description: 'Atendimento estético personalizado em Goiânia, com avaliação individual e cuidado conduzido pela responsável técnica.',
     whatsapp: '+5562985394226',
     instagram: 'clinicathaysamedeiros',
     phone: '(62) 98539-4226',

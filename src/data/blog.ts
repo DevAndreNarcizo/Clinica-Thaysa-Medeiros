@@ -151,7 +151,7 @@ Exercícios aumentam a circulação e podem deslocar produtos injetáveis como b
 
 O álcool aumenta o risco de hematomas e prolonga o edema pós-procedimento.
 
-## 4. Não toque ou massageie a área tratada
+## 4. Não toque ou masdarkie a área tratada
 
 Especialmente após injeções de botox ou preenchimento, tocar na área pode deslocar o produto e comprometer o resultado.
 
